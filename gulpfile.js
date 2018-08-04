@@ -25,14 +25,14 @@ var cfg = require( './gulpconfig.json' );
 var paths = cfg.paths;
 
 gulp.task( 'watch-scss', [ 'browser-sync' ], function() {
-	gulp.watch( paths.sass + '/**/*.scss', [ 'scss-for-dev' ] );
+	gulp.watch( paths.dev + '/sass/**/*.scss', [ 'scss-for-dev' ] );
 } );
 
 // Run:
 // gulp sass
 // Compiles SCSS files in CSS
 gulp.task( 'sass', function() {
-	var stream = gulp.src( paths.sass + '/*.scss' )
+	var stream = gulp.src( paths.dev + '/sass/*.scss' )
 		.pipe( plumber( {
 			errorHandler: function( err ) {
 				console.log( err );
@@ -51,7 +51,7 @@ gulp.task( 'sass', function() {
 // gulp watch
 // Starts watcher. Watcher runs gulp sass task on changes
 gulp.task( 'watch', function() {
-	gulp.watch( paths.sass + '/**/*.scss', [ 'styles' ] );
+	gulp.watch( paths.dev + '/sass/**/*.scss', [ 'styles' ] );
 	gulp.watch( [ paths.dev + '/js/**/*.js', 'js/**/*.js', '!js/front.js', '!js/front.min.js', ], [ 'scripts' ] );
 } );
 
