@@ -1,0 +1,43 @@
+{
+  "name": "VUEIX",
+  "version": "0.0.1",
+  "description": "Vueix",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "gulp copy-assets"
+  },
+  "engines": {
+    "npm": ">=2.1.8"
+  },
+  "keywords": [
+    "wordpress"
+  ],
+  "author": "David Cramer",
+  "license": "GPL-2.0",
+  "homepage": "https://cramer.co.za",
+  "dependencies": {
+    "del": "^3.0.0",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-clone": "2.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-ignore": "^2.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-merge": "^0.1.1",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-rev": "^8.1.1",
+    "gulp-rimraf": "^0.2.2",
+    "gulp-sass": "4.0.1",
+    "gulp-sequence": "1.0.0",
+    "gulp-sourcemaps": "2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "gulp-watch": "5.0.0",
+    "merge2": "^1.2.1",
+    "run-sequence": "^2.2.1",
+    "vue": "^2.5.16"
+  }
+}
