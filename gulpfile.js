@@ -103,6 +103,7 @@ gulp.task( 'styles', function( callback ) {
 // Uglifies and concat all JS files into one
 gulp.task( 'scripts', function() {
 	var scripts = [
+		paths.dev + '/js/**/*.js',
 		paths.dev + '/js/main.js'
 	];
 	gulp.src( scripts )

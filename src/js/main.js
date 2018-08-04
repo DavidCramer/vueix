@@ -1,12 +1,16 @@
 var vueix = new Vue( {
 	el: '.vueix-app',
-	data: {},
-	created: function() {
+	data: {
+		vueix : null
+	},
+	mounted: function() {
 		this.initData();
 	},
 	methods: {
 		initData: function() {
-			self.data = vueixInstance.data;
+			var init = this.$el.getAttribute( 'data-vueix' );
+			var data = JSON.parse( init );
+			this.vueix = data.data;
 		},
 		saveData: function() {
 
