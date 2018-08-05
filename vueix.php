@@ -34,8 +34,7 @@ add_filter( 'the_content', function () {
 		'data' => array(
 			'name'    => 'David',
 			'details' => array(
-				'surname' => 'cramer',
-				'age'     => '38',
+					's' => ''
 			),
 
 		),
@@ -45,6 +44,10 @@ add_filter( 'the_content', function () {
 		'name'    => array(
 			'label' => 'First Name',
 			'type'  => 'text',
+		),
+		'extra'    => array(
+			'label' => 'Extra',
+			'type'  => 'checkbox',
 		),
 		'details' => array(
 			'surname' => array(
@@ -60,20 +63,21 @@ add_filter( 'the_content', function () {
 
 	?>
 	<div class="vueix-app" data-vueix="<?php echo esc_attr( wp_json_encode( $data ) ); ?>">
-
-		<?php foreach ( $structure as $name => $item ) : ?>
-			<?php if ( !isset( $item['type'] ) ) : ?>
-				<div>
-					<h5><?php echo $name; ?></h5>
-					<?php foreach ( $item as $key => $value ) : ?>
-						<input-text v-bind:field="<?php echo esc_attr( wp_json_encode( $value ) ); ?>" v-model="vueix.<?php echo esc_attr( $name ); ?>.<?php echo esc_attr( $key ); ?>" v-if="vueix"></input-text>
-					<?php endforeach; ?>
-				</div>
-			<?php else: ?>
-				<input-text v-bind:field="<?php echo esc_attr( wp_json_encode( $item ) ); ?>" v-model="vueix.<?php echo esc_attr( $name ); ?>" v-if="vueix"></input-text>
-			<?php endif; ?>
-		<?php endforeach; ?>
-		<pre>{{vueix}}</pre>
+		<div v-if="vueix">
+			<?php foreach ( $structure as $name => $item ) : ?>
+				<?php if ( ! isset( $item['type'] ) ) : ?>
+					<div>
+						<h5><?php echo $name; ?></h5>
+						<?php foreach ( $item as $key => $value ) : ?>
+							<input-<?php echo esc_attr($value['type'] ); ?> v-bind:field="<?php echo esc_attr( wp_json_encode( $value ) ); ?>" v-model="vueix.<?php echo esc_attr( $name ); ?>.<?php echo esc_attr( $key ); ?>" v-if="vueix.extra"></input-<?php echo esc_attr($value['type'] ); ?>>
+						<?php endforeach; ?>
+					</div>
+				<?php else: ?>
+				<input-<?php echo esc_attr($item['type'] ); ?> v-bind:field="<?php echo esc_attr( wp_json_encode( $item ) ); ?>" v-model="vueix.<?php echo esc_attr( $name ); ?>" v-if="vueix"></input-<?php echo esc_attr($item['type'] ); ?>>
+				<?php endif; ?>
+			<?php endforeach; ?>
+			<pre>{{vueix}}</pre>
+		</div>
 	</div>
 	<?php
 } );
